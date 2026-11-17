@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
@@ -1037,10 +1037,10 @@
        ========================================================================== */
     const CONFIG_PEMBUAT = {
       pinRahasia: "1234", // Ganti PIN rahasia Anda di sini
-      namaPacar: "Sayangku",
-      captionFoto: "Kesayangan yang paling manis",
-      isiSurat: "Selamat ulang tahun ya sayang!\n\nTerima kasih sudah selalu menjadi warna kuning paling cerah di hari-hariku. Semoga di usia yang baru ini kamu selalu sehat, bahagia, semua impianmu tercapai, dan kita terus bareng-bareng melewati banyak momen lucu ke depannya.\n\nLove you so much!",
-      hadiahGame: "Kupon Bebas Pilih Makan Enak + Peluk Hangat Seharian!"
+      namaPacar: "Ayaaaaaang Ratuuu akuuu",
+      captionFoto: "Cantiknyaaa akuuu",
+      isiSurat: "Selamat ulang tahun ya sayaaang kuu cantik kuuu cintaaa kuuuu!!!\n\nTerima kasih sudah selalu menjadi warna kuning paling cerah di hari-hariku. Semoga di usia yang baru ini kamu selalu sehat, bahagia, semua impianmu tercapai, dan kita terus bareng-bareng melewati banyak momen lucu ke depannya.\n\nLove you so much!",
+      hadiahGame: "Kupon Traktiirr ayaaang fajarrrr hehehe"
     };
 
     const ALASAN_SPESIAL = [
@@ -1319,16 +1319,6 @@
     let currentData = { ...CONFIG_PEMBUAT };
 
     function loadData() {
-      const params = new URLSearchParams(window.location.search);
-      if (params.has('n')) currentData.namaPacar = params.get('n');
-      if (params.has('c')) currentData.captionFoto = params.get('c');
-      if (params.has('l')) currentData.isiSurat = params.get('l');
-      if (params.has('r')) currentData.hadiahGame = params.get('r');
-
-      const saved = localStorage.getItem('bday_yellow_data');
-      if (!params.has('n') && saved) {
-        try { currentData = { ...currentData, ...JSON.parse(saved) }; } catch (e) {}
-      }
       renderData();
     }
 
@@ -1396,12 +1386,8 @@
 
     document.getElementById('btnShareLink').addEventListener('click', () => {
       const url = new URL(window.location.href.split('?')[0]);
-      url.searchParams.set('n', currentData.namaPacar);
-      url.searchParams.set('c', currentData.captionFoto);
-      url.searchParams.set('l', currentData.isiSurat);
-      url.searchParams.set('r', currentData.hadiahGame);
       navigator.clipboard.writeText(url.toString()).then(() => {
-        showToast('Link khusus pacar berhasil disalin!');
+        showToast('Link berhasil disalin!');
       });
     });
 
