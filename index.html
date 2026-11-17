@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
@@ -378,10 +378,12 @@
 
     .hero-title .highlight-name {
       color: #E68A00;
-      display: inline-block;
+      display: inline;
       background: linear-gradient(transparent 60%, var(--yellow-main) 60%);
-      padding: 0 6px;
-      border-radius: 6px;
+      padding: 2px 4px;
+      border-radius: 4px;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
     }
 
     .hero-subtitle {
@@ -818,7 +820,7 @@
         </div>
 
         <h1 class="hero-title">
-          Selamat Ulang Tahun, <br />
+          Selamat Ulang Tahun,<br>
           <span id="displayPartnerName" class="highlight-name">Sayangku</span>!
         </h1>
 
