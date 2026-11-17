@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selamat Ulang Tahun Sayang!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ==========================================================================
+       VARIABEL GOLDEN RATIO (1 : 1.618) & PALET KUNING KUCING
+       ========================================================================== */
+    :root {
+      --phi: 1.618;
+      --bg-cream: #FFFDF0;
+      --yellow-soft: #FFF5B8;
+      --yellow-main: #FFE047;
+      --yellow-gold: #FFC812;
+      --amber-warm: #FFA726;
+      --brown-text: #5A3818;
+      --brown-light: #8C5E35;
+      --white-card: #FFFFFF;
+      --shadow-soft: 0 12px 32px rgba(255, 193, 7, 0.24);
+
+      /* Skala Tipografi Golden Ratio */
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.85rem);
+      --text-base: clamp(0.95rem, 0.9rem + 0.3vw, 1.08rem);
+      --text-md: calc(var(--text-base) * 1.25);
+      --text-lg: calc(var(--text-base) * 1.618);
+      --text-xl: clamp(1.85rem, 1.5rem + 1.8vw, 2.75rem);
+
+      /* Skala Spacing Golden Ratio */
+      --space-xs: 0.618rem;
+      --space-sm: 1rem;
+      --space-md: 1.618rem;
+      --space-lg: 2.618rem;
+      --space-xl: 4.236rem;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Cursor utama tetap default bawaan sistem */
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background-color: var(--bg-cream);
+      background-image: radial-gradient(#FFE57F 2px, transparent 2px);
+      background-size: 28px 28px;
+      color: var(--brown-text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      line-height: 1.618;
+    }
+
+    h1, h2, h3, .font-title {
+      font-family: 'Fredoka', sans-serif;
+      line-height: 1.25;
+    }
+
+    /* ==========================================================================
+       ANIMASI TEMA KUNING & KUCING LUCU
+       ========================================================================== */
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(4deg); }
+    }
+
+    @keyframes sunSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes catBob {
+      0%, 100% { transform: translateY(0) rotate(-2deg); }
+      50% { transform: translateY(-6px) rotate(2deg); }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 8px 20px rgba(255, 200, 18, 0.35); }
+      50% { box-shadow: 0 12px 28px rgba(255, 167, 38, 0.55); }
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.7); opacity: 0; }
+      70% { transform: scale(1.06); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes flameFlicker {
+      0%, 100% { transform: scale(1) rotate(-2deg); }
+      50% { transform: scale(1.12) rotate(3deg); }
+    }
+
+    /* Dekorasi Latar Belakang Mengambang */
+    .bg-decor {
+      position: fixed;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.55;
+      animation: floatSlow 6s ease-in-out infinite;
+    }
+    .bg-sun {
+      top: 5%;
+      right: 6%;
+      width: 84px;
+      height: 84px;
+      animation: sunSpin 28s linear infinite;
+    }
+    .bg-paw-1 {
+      bottom: 12%;
+      left: 5%;
+      width: 64px;
+      height: 64px;
+      animation-delay: 1s;
+    }
+    .bg-cat-peek {
+      bottom: 8%;
+      right: 5%;
+      width: 78px;
+      height: 78px;
+      animation-delay: 2s;
+    }
+
+    /* ==========================================================================
+       NAVBAR / TOP BAR (Proporsi Golden Ratio)
+       ========================================================================== */
+    .top-bar {
+      position: relative;
+      z-index: 10;
+      max-width: 1024px;
+      margin: 0 auto;
+      padding: var(--space-sm) var(--space-md);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .badge-edition {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--white-card);
+      border: 2px solid var(--yellow-main);
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: var(--text-xs);
+      color: var(--brown-text);
+      box-shadow: 0 4px 12px rgba(255, 200, 18, 0.2);
+      user-select: none;
+    }
+
+    .btn-music {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, var(--yellow-main), var(--yellow-gold));
+      border: 2px solid #FFF;
+      color: var(--brown-text);
+      font-family: 'Fredoka', sans-serif;
+      font-weight: 600;
+      font-size: var(--text-xs);
+      padding: 0.55rem 1.15rem;
+      border-radius: 999px;
+      box-shadow: 0 6px 16px rgba(255, 193, 7, 0.35);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-music:hover {
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================================
+       CONTAINER UTAMA & GOLDEN RATIO LAYOUT (1 : 1.618)
+       ========================================================================== */
+    .main-container {
+      position: relative;
+      z-index: 5;
+      max-width: 1024px;
+      margin: 0 auto;
+      padding: var(--space-sm) var(--space-md) var(--space-xl);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+
+    /* HERO SECTION: Grid 1 : 1.618 di Desktop, Stack rapi di Mobile */
+    .hero-card {
+      background: var(--white-card);
+      border: 3px solid var(--yellow-main);
+      border-radius: 32px;
+      padding: var(--space-lg) var(--space-md);
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (min-width: 820px) {
+      .hero-card {
+        grid-template-columns: 1fr 1.618fr;
+        padding: var(--space-lg);
+      }
+    }
+
+    /* ==========================================================================
+       BINGKAI POLAROID KUCING + SLIDESHOW FADE IN/OUT 3 DETIK
+       ========================================================================== */
+    .polaroid-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      padding-top: 18px;
+    }
+
+    /* Telinga Kucing SVG di atas Polaroid */
+    .cat-ears-top {
+      width: 160px;
+      height: 36px;
+      margin-bottom: -10px;
+      z-index: 2;
+      animation: catBob 4s ease-in-out infinite;
+    }
+
+    .polaroid-frame {
+      background: #FFFDF5;
+      border: 3px solid var(--yellow-gold);
+      border-radius: 22px;
+      padding: 12px 12px 18px 12px;
+      width: 100%;
+      max-width: 280px;
+      box-shadow: 0 14px 28px rgba(90, 56, 24, 0.12);
+      transform: rotate(-2deg);
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+    .polaroid-frame:hover {
+      transform: rotate(0deg) scale(1.02);
+    }
+
+    /* Area Slideshow Foto Rasio 1:1 / Golden Box */
+    .photo-slideshow-box {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1.08;
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--yellow-soft);
+      border: 2px dashed var(--amber-warm);
+    }
+
+    .slide-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.9s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide-photo.active {
+      opacity: 1;
+      z-index: 2;
+    }
+
+    .slide-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Gaya khusus Placeholder agar mudah dikenali sebelum diganti foto asli */
+    .photo-placeholder-card {
+      width: 100%;
+      height: 100%;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(145deg, #FFF9C4, #FFE082);
+      color: var(--brown-text);
+      gap: 0.5rem;
+    }
+    .photo-placeholder-card span.badge-slot {
+      background: var(--white-card);
+      color: var(--brown-text);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1.5px solid var(--amber-warm);
+    }
+    .photo-placeholder-card p {
+      font-size: 0.8rem;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    /* Indikator titik slideshow di bawah foto */
+    .slide-dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 10px;
+    }
+    .slide-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #FFE082;
+      transition: all 0.3s ease;
+    }
+    .slide-dot.active {
+      width: 20px;
+      border-radius: 999px;
+      background: var(--amber-warm);
+    }
+
+    .polaroid-caption {
+      margin-top: 8px;
+      text-align: center;
+      font-family: 'Fredoka', sans-serif;
+      font-size: var(--text-xs);
+      color: var(--brown-text);
+    }
+
+    /* ==========================================================================
+       HERO CONTENT (TIPOGRAFI & TOMBOL GOLDEN RATIO)
+       ========================================================================== */
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: var(--space-sm);
+    }
+
+    @media (min-width: 820px) {
+      .hero-content {
+        align-items: flex-start;
+        text-align: left;
+      }
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: var(--yellow-soft);
+      color: var(--brown-text);
+      font-weight: 700;
+      font-size: var(--text-xs);
+      padding: 0.45rem 1rem;
+      border-radius: 999px;
+    }
+
+    .hero-title {
+      font-size: var(--text-xl);
+      color: var(--brown-text);
+      letter-spacing: -0.01em;
+    }
+
+    .hero-title .highlight-name {
+      color: #E68A00;
+      display: inline-block;
+      background: linear-gradient(transparent 60%, var(--yellow-main) 60%);
+      padding: 0 6px;
+      border-radius: 6px;
+    }
+
+    .hero-subtitle {
+      font-size: var(--text-base);
+      color: var(--brown-light);
+      max-width: 54ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-top: var(--space-xs);
+      width: 100%;
+      justify-content: center;
+    }
+
+    @media (min-width: 820px) {
+      .hero-actions {
+        justify-content: flex-start;
+      }
+    }
+
+    /* Tombol dengan rasio lebar:tinggi mendekati Golden Ratio */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      background: linear-gradient(135deg, var(--yellow-main), var(--yellow-gold));
+      color: var(--brown-text);
+      border: none;
+      font-family: 'Fredoka', sans-serif;
+      font-size: var(--text-base);
+      font-weight: 600;
+      padding: 0.85rem 1.618rem;
+      border-radius: 18px;
+      animation: pulseGlow 3s infinite;
+      transition: transform 0.2s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.02);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      background: var(--yellow-soft);
+      color: var(--brown-text);
+      border: 2px solid var(--yellow-gold);
+      font-family: 'Fredoka', sans-serif;
+      font-size: var(--text-base);
+      font-weight: 600;
+      padding: 0.85rem 1.5rem;
+      border-radius: 18px;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .btn-secondary:hover {
+      background: var(--yellow-main);
+      transform: translateY(-3px);
+    }
+
+    /* ==========================================================================
+       GRID SECTION BAWAH (1.618 : 1 GOLDEN RATIO)
+       ========================================================================== */
+    .interactive-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+
+    @media (min-width: 820px) {
+      .interactive-grid {
+        grid-template-columns: 1fr 1.618fr;
+      }
+    }
+
+    .section-card {
+      background: var(--white-card);
+      border: 3px solid var(--yellow-main);
+      border-radius: 28px;
+      padding: var(--space-md);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+    }
+
+    .section-title {
+      font-size: var(--text-lg);
+      color: var(--brown-text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    /* Kue Ulang Tahun SVG Interaktif */
+    .cake-container {
+      padding: var(--space-xs);
+      border-radius: 20px;
+      transition: transform 0.2s ease;
+    }
+    .cake-container:hover {
+      transform: scale(1.04);
+    }
+
+    .flame-anim {
+      transform-origin: center bottom;
+      animation: flameFlicker 0.8s ease-in-out infinite;
+    }
+    .flame-off {
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .smoke-anim {
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    .smoke-anim.visible {
+      opacity: 0.85;
+    }
+
+    /* ==========================================================================
+       MINI GAME KUCING & KUNING
+       ========================================================================== */
+    .game-header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--yellow-soft);
+      padding: 0.618rem 1rem;
+      border-radius: 16px;
+      font-weight: 700;
+      font-size: var(--text-xs);
+    }
+
+    .game-arena {
+      position: relative;
+      width: 100%;
+      height: 230px;
+      background: linear-gradient(180deg, #FFFDF2 0%, #FFF6C2 100%);
+      border: 2.5px dashed var(--yellow-gold);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .game-target {
+      position: absolute;
+      width: 52px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: popIn 0.25s ease forwards;
+      user-select: none;
+    }
+
+    /* ==========================================================================
+       MODAL SURAT CINTA, KARTU SPESIAL & PENGATURAN RAHASIA
+       ========================================================================== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(90, 56, 24, 0.55);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-sm);
+    }
+    .modal-overlay.open {
+      display: flex;
+      animation: popIn 0.25s ease;
+    }
+
+    .modal-box {
+      background: var(--white-card);
+      border: 3px solid var(--yellow-gold);
+      border-radius: 28px;
+      max-width: 520px;
+      width: 100%;
+      padding: var(--space-md);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .letter-paper {
+      background: #FFFDF2;
+      border: 2px dashed var(--yellow-gold);
+      border-radius: 18px;
+      padding: var(--space-md);
+      margin: var(--space-sm) 0;
+      font-size: var(--text-base);
+      white-space: pre-line;
+      text-align: left;
+      color: var(--brown-text);
+    }
+
+    .form-group {
+      margin-bottom: var(--space-sm);
+      text-align: left;
+    }
+    .form-group label {
+      display: block;
+      font-weight: 700;
+      font-size: var(--text-xs);
+      margin-bottom: 4px;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 0.65rem 0.9rem;
+      border: 2px solid var(--yellow-main);
+      border-radius: 12px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: var(--text-xs);
+      color: var(--brown-text);
+    }
+
+    /* Footer & Toast Notifikasi */
+    .footer-clean {
+      text-align: center;
+      padding: var(--space-md);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: var(--brown-light);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .admin-controls {
+      display: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+    .admin-controls.unlocked {
+      display: flex;
+    }
+
+    .toast-notif {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--brown-text);
+      color: #FFFDF0;
+      padding: 0.7rem 1.35rem;
+      border-radius: 999px;
+      font-size: var(--text-xs);
+      font-weight: 700;
+      z-index: 200;
+      opacity: 0;
+      transition: all 0.35s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+    .toast-notif.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    #confettiCanvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 150;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- Dekorasi Vektor SVG Latar Belakang -->
+  <svg class="bg-decor bg-sun" viewBox="0 0 100 100" fill="none">
+    <circle cx="50" cy="50" r="24" fill="#FFD54F"/>
+    <g stroke="#FFB300" stroke-width="6" stroke-linecap="round">
+      <line x1="50" y1="8" x2="50" y2="18"/>
+      <line x1="50" y1="82" x2="50" y2="92"/>
+      <line x1="8" y1="50" x2="18" y2="50"/>
+      <line x1="82" y1="50" x2="92" y2="50"/>
+      <line x1="20" y1="20" x2="27" y2="27"/>
+      <line x1="73" y1="73" x2="80" y2="80"/>
+      <line x1="80" y1="20" x2="73" y2="27"/>
+      <line x1="27" y1="73" x2="20" y2="80"/>
+    </g>
+  </svg>
+
+  <svg class="bg-decor bg-paw-1" viewBox="0 0 64 64" fill="#FFD54F">
+    <ellipse cx="32" cy="42" rx="14" ry="11"/>
+    <circle cx="16" cy="27" r="6"/>
+    <circle cx="27" cy="20" r="6"/>
+    <circle cx="39" cy="20" r="6"/>
+    <circle cx="49" cy="27" r="6"/>
+  </svg>
+
+  <svg class="bg-decor bg-cat-peek" viewBox="0 0 80 80" fill="none">
+    <path d="M18 35 L14 12 L32 24 Z" fill="#FFD54F"/>
+    <path d="M62 35 L66 12 L48 24 Z" fill="#FFD54F"/>
+    <circle cx="40" cy="46" r="26" fill="#FFE082"/>
+    <circle cx="31" cy="43" r="3" fill="#5A3818"/>
+    <circle cx="49" cy="43" r="3" fill="#5A3818"/>
+    <path d="M36 50 Q40 54 44 50" stroke="#5A3818" stroke-width="2.5" stroke-linecap="round"/>
+  </svg>
+
+  <!-- TOP BAR -->
+  <header class="top-bar">
+    <!-- Ketuk 5x untuk membuka PIN Edit Rahasia -->
+    <div id="secretTrigger" class="badge-edition" title="Special Day Edition">
+      <svg width="20" height="20" viewBox="0 0 32 32" fill="none">
+        <circle cx="16" cy="16" r="7" fill="#FFA000"/>
+        <circle cx="16" cy="5" r="3.5" fill="#FFD54F"/>
+        <circle cx="16" cy="27" r="3.5" fill="#FFD54F"/>
+        <circle cx="5" cy="16" r="3.5" fill="#FFD54F"/>
+        <circle cx="27" cy="16" r="3.5" fill="#FFD54F"/>
+        <circle cx="8" cy="8" r="3.5" fill="#FFE082"/>
+        <circle cx="24" cy="24" r="3.5" fill="#FFE082"/>
+        <circle cx="24" cy="8" r="3.5" fill="#FFE082"/>
+        <circle cx="8" cy="24" r="3.5" fill="#FFE082"/>
+      </svg>
+      <span>Special Day Edition</span>
+    </div>
+
+    <button id="btnMusic" class="btn-music" type="button">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5A3818" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 18V5l12-2v13"/>
+        <circle cx="6" cy="18" r="3" fill="#FFF"/>
+        <circle cx="18" cy="16" r="3" fill="#FFF"/>
+      </svg>
+      <span id="musicLabel">Putar Lagu</span>
+    </button>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-container">
+
+    <!-- HERO SECTION (GOLDEN RATIO 1 : 1.618) -->
+    <section class="hero-card">
+
+      <!-- Kolom Kiri (1): Bingkai Polaroid Kucing + Slideshow 3 Detik -->
+      <div class="polaroid-wrapper">
+        <!-- Telinga Kucing Vektor -->
+        <svg class="cat-ears-top" viewBox="0 0 160 40" fill="none">
+          <path d="M22 38 L12 4 L52 26 Z" fill="#FFC812" stroke="#5A3818" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M25 32 L19 12 L42 25 Z" fill="#FFB74D"/>
+          <path d="M138 38 L148 4 L108 26 Z" fill="#FFC812" stroke="#5A3818" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M135 32 L141 12 L118 25 Z" fill="#FFB74D"/>
+        </svg>
+
+        <div id="polaroidCard" class="polaroid-frame">
+          <div class="photo-slideshow-box" id="photoSlideshow">
+
+            <!-- =================================================================
+                 [PENANDA FOTO 1] GANTI DENGAN FOTO PACAR KE-1
+                 Cara mengganti dengan foto nyata:
+                 Hapus <div class="photo-placeholder-card">...</div> di bawah ini,
+                 lalu ganti menjadi: <img src="foto1.jpg" alt="Foto Pacar 1">
+                 ================================================================= -->
+            <div class="slide-photo active">
+              <div class="photo-placeholder-card">
+                <span class="badge-slot">SLOT FOTO 1 (PLACEHOLDER)</span>
+                <svg width="56" height="56" viewBox="0 0 64 64" fill="none">
+                  <path d="M16 26 L12 10 L28 19 Z" fill="#FFA726"/>
+                  <path d="M48 26 L52 10 L36 19 Z" fill="#FFA726"/>
+                  <circle cx="32" cy="36" r="20" fill="#FFFDF0" stroke="#5A3818" stroke-width="2.5"/>
+                  <circle cx="25" cy="34" r="2.5" fill="#5A3818"/>
+                  <circle cx="39" cy="34" r="2.5" fill="#5A3818"/>
+                  <path d="M28 40 Q32 44 36 40" stroke="#5A3818" stroke-width="2.2" stroke-linecap="round"/>
+                </svg>
+                <p>Tempat Foto Lucu #1<br>Ganti di kode: <strong>SLOT FOTO 1</strong></p>
+              </div>
+            </div>
+
+            <!-- =================================================================
+                 [PENANDA FOTO 2] GANTI DENGAN FOTO PACAR KE-2
+                 Cara mengganti dengan foto nyata:
+                 Hapus <div class="photo-placeholder-card">...</div> di bawah ini,
+                 lalu ganti menjadi: <img src="foto2.jpg" alt="Foto Pacar 2">
+                 ================================================================= -->
+            <div class="slide-photo">
+              <div class="photo-placeholder-card">
+                <span class="badge-slot">SLOT FOTO 2 (PLACEHOLDER)</span>
+                <svg width="56" height="56" viewBox="0 0 64 64" fill="none">
+                  <circle cx="32" cy="32" r="20" fill="#FFFDF0" stroke="#5A3818" stroke-width="2.5"/>
+                  <path d="M23 29 L27 32 L23 35" stroke="#5A3818" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M41 29 L37 32 L41 35" stroke="#5A3818" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M27 41 Q32 46 37 41" stroke="#5A3818" stroke-width="2.2" stroke-linecap="round"/>
+                </svg>
+                <p>Tempat Foto Senyum #2<br>Ganti di kode: <strong>SLOT FOTO 2</strong></p>
+              </div>
+            </div>
+
+            <!-- =================================================================
+                 [PENANDA FOTO 3] GANTI DENGAN FOTO PACAR KE-3
+                 Cara mengganti dengan foto nyata:
+                 Hapus <div class="photo-placeholder-card">...</div> di bawah ini,
+                 lalu ganti menjadi: <img src="foto3.jpg" alt="Foto Pacar 3">
+                 ================================================================= -->
+            <div class="slide-photo">
+              <div class="photo-placeholder-card">
+                <span class="badge-slot">SLOT FOTO 3 (PLACEHOLDER)</span>
+                <svg width="56" height="56" viewBox="0 0 64 64" fill="none">
+                  <path d="M32 52 C32 52 12 38 12 24 C12 17 18 12 24 12 C28 12 31 14 32 17 C33 14 36 12 40 12 C46 12 52 17 52 24 C52 38 32 52 32 52 Z" fill="#FFA726" stroke="#5A3818" stroke-width="2.5"/>
+                </svg>
+                <p>Tempat Foto Favorit #3<br>Ganti di kode: <strong>SLOT FOTO 3</strong></p>
+              </div>
+            </div>
+
+            <!-- =================================================================
+                 [PENANDA FOTO 4] GANTI DENGAN FOTO PACAR KE-4
+                 Cara mengganti dengan foto nyata:
+                 Hapus <div class="photo-placeholder-card">...</div> di bawah ini,
+                 lalu ganti menjadi: <img src="foto4.jpg" alt="Foto Pacar 4">
+                 ================================================================= -->
+            <div class="slide-photo">
+              <div class="photo-placeholder-card">
+                <span class="badge-slot">SLOT FOTO 4 (PLACEHOLDER)</span>
+                <svg width="56" height="56" viewBox="0 0 64 64" fill="none">
+                  <polygon points="32,10 38,24 54,26 42,36 45,52 32,44 19,52 22,36 10,26 26,24" fill="#FFD54F" stroke="#5A3818" stroke-width="2.5" stroke-linejoin="round"/>
+                </svg>
+                <p>Tempat Momen Manis #4<br>Ganti di kode: <strong>SLOT FOTO 4</strong></p>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="slide-dots" id="slideDots">
+            <span class="slide-dot active"></span>
+            <span class="slide-dot"></span>
+            <span class="slide-dot"></span>
+            <span class="slide-dot"></span>
+          </div>
+
+          <p id="displayCaption" class="polaroid-caption">Kesayangan yang paling manis</p>
+        </div>
+      </div>
+
+      <!-- Kolom Kanan (1.618): Ucapan Utama & Aksi -->
+      <div class="hero-content">
+        <div class="hero-pill">
+          <svg width="18" height="18" viewBox="0 0 32 32" fill="#FFA726">
+            <ellipse cx="16" cy="21" rx="7" ry="5.5"/>
+            <circle cx="8" cy="13.5" r="3"/>
+            <circle cx="13.5" cy="10" r="3"/>
+            <circle cx="19.5" cy="10" r="3"/>
+            <circle cx="24.5" cy="13.5" r="3"/>
+          </svg>
+          <span>Happy Birthday, My Yellow Sunshine!</span>
+        </div>
+
+        <h1 class="hero-title">
+          Selamat Ulang Tahun, <br />
+          <span id="displayPartnerName" class="highlight-name">Sayangku</span>!
+        </h1>
+
+        <p class="hero-subtitle">
+          Semoga harimu selalu secerah warna kuning favoritmu, penuh tawa hangat, dan dikelilingi hal-hal menggemaskan seperti kucing kesayanganmu.
+        </p>
+
+        <div class="hero-actions">
+          <button id="btnOpenLetter" class="btn-primary" type="button">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5A3818" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="3" fill="#FFFDF0"/>
+              <path d="M22 6L12 13L2 6"/>
+            </svg>
+            <span>Buka Surat Spesial</span>
+          </button>
+
+          <button id="btnMeowReason" class="btn-secondary" type="button">
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none">
+              <path d="M8 14 L5 4 L15 10 Z" fill="#FFA726"/>
+              <path d="M24 14 L27 4 L17 10 Z" fill="#FFA726"/>
+              <circle cx="16" cy="18" r="10" fill="#FFE082" stroke="#5A3818" stroke-width="2"/>
+              <circle cx="13" cy="17" r="1.4" fill="#5A3818"/>
+              <circle cx="19" cy="17" r="1.4" fill="#5A3818"/>
+            </svg>
+            <span>Alasan Kamu Spesial</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE SECTION (GOLDEN RATIO 1 : 1.618) -->
+    <section class="interactive-grid">
+
+      <!-- Kolom Kiri (1): Kue Ulang Tahun Tiup Lilin -->
+      <div class="section-card">
+        <h2 class="section-title">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFA726" stroke-width="2.4">
+            <path d="M12 2L14.5 8.5L21 9.5L16 14L17.5 20.5L12 17L6.5 20.5L8 14L3 9.5L9.5 8.5L12 2Z" fill="#FFD54F"/>
+          </svg>
+          <span>Make a Wish!</span>
+        </h2>
+        <p style="font-size: var(--text-xs); color: var(--brown-light);">
+          Pejamkan mata, buat harapan terbaik, lalu klik lilinnya untuk meniup!
+        </p>
+
+        <div id="cakeBox" class="cake-container" role="button" tabindex="0" aria-label="Tiup lilin kue ulang tahun">
+          <svg width="165" height="165" viewBox="0 0 200 200" fill="none">
+            <!-- Asap saat lilin mati -->
+            <g id="candleSmoke" class="smoke-anim">
+              <path d="M98 48 Q92 38 100 28 Q106 18 98 10" stroke="#9E9E9E" stroke-width="3" stroke-linecap="round"/>
+              <path d="M105 50 Q112 40 104 30" stroke="#BDBDBD" stroke-width="2.5" stroke-linecap="round"/>
+            </g>
+            <!-- Api Lilin -->
+            <g id="candleFlame" class="flame-anim">
+              <path d="M100 26 C100 26 112 42 112 50 C112 56.6 106.6 62 100 62 C93.4 62 88 56.6 88 50 C88 42 100 26 100 26 Z" fill="#FF9800"/>
+              <path d="M100 36 C100 36 106 45 106 50 C106 53.3 103.3 56 100 56 C96.7 56 94 53.3 94 50 C94 45 100 36 100 36 Z" fill="#FFF59D"/>
+            </g>
+            <!-- Batang Lilin -->
+            <rect x="93" y="62" width="14" height="32" rx="4" fill="#FFF" stroke="#5A3818" stroke-width="2.5"/>
+            <path d="M93 72 L107 67 M93 82 L107 77" stroke="#FFD54F" stroke-width="3"/>
+            <!-- Layer Kue Atas -->
+            <rect x="52" y="94" width="96" height="36" rx="14" fill="#FFE082" stroke="#5A3818" stroke-width="3"/>
+            <path d="M52 106 Q64 116 76 106 Q88 116 100 106 Q112 116 124 106 Q136 116 148 106" stroke="#FFF" stroke-width="5" stroke-linecap="round"/>
+            <!-- Layer Kue Bawah -->
+            <rect x="34" y="128" width="132" height="44" rx="16" fill="#FFD54F" stroke="#5A3818" stroke-width="3"/>
+            <circle cx="62" cy="150" r="4" fill="#FF8A65"/>
+            <circle cx="100" cy="150" r="4" fill="#FFF"/>
+            <circle cx="138" cy="150" r="4" fill="#FF8A65"/>
+            <!-- Piring Kue -->
+            <rect x="20" y="172" width="160" height="10" rx="5" fill="#FFA726" stroke="#5A3818" stroke-width="2.5"/>
+          </svg>
+        </div>
+
+        <span id="candleStatus" style="font-size: var(--text-xs); font-weight: 700; color: #E68A00;">
+          Klik kue di atas untuk meniup lilin
+        </span>
+      </div>
+
+      <!-- Kolom Kanan (1.618): Mini Game Kucing & Kuning -->
+      <div class="section-card">
+        <h2 class="section-title">
+          <svg width="24" height="24" viewBox="0 0 32 32" fill="#FFA726">
+            <ellipse cx="16" cy="21" rx="7" ry="5.5"/>
+            <circle cx="8" cy="13.5" r="3"/>
+            <circle cx="13.5" cy="10" r="3"/>
+            <circle cx="19.5" cy="10" r="3"/>
+            <circle cx="24.5" cy="13.5" r="3"/>
+          </svg>
+          <span>Tangkap Kucing & Kebahagiaan Kuning!</span>
+        </h2>
+
+        <div class="game-header">
+          <span>Skor: <strong id="gameScore">0</strong> / 10</span>
+          <span>Waktu: <strong id="gameTimer">20</strong> detik</span>
+        </div>
+
+        <div id="gameArena" class="game-arena">
+          <button id="btnStartGame" class="btn-primary" type="button">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#5A3818">
+              <polygon points="6,4 20,12 6,20"/>
+            </svg>
+            <span>Mulai Main (20 Detik)</span>
+          </button>
+        </div>
+
+        <p style="font-size: var(--text-xs); color: var(--brown-light);">
+          Kumpulkan minimal <strong>10 poin</strong> untuk membuka hadiah spesial dari aku!
+        </p>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- FOOTER & MENU ADMIN RAHASIA -->
+  <footer class="footer-clean">
+    <p style="display: inline-flex; align-items: center; gap: 6px;">
+      <span>Dibuat dengan penuh</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="#FFC812">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+      </svg>
+      <span>khusus untuk hari ulang tahunmu!</span>
+    </p>
+
+    <!-- Hanya muncul jika Anda membuka PIN Rahasia -->
+    <div id="adminControls" class="admin-controls">
+      <button id="btnOpenEdit" class="btn-secondary" style="padding: 0.55rem 1rem; font-size: var(--text-xs);" type="button">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5A3818" stroke-width="2.2">
+          <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+        </svg>
+        <span>Edit Nama & Isi Surat</span>
+      </button>
+
+      <button id="btnShareLink" class="btn-primary" style="padding: 0.55rem 1rem; font-size: var(--text-xs);" type="button">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5A3818" stroke-width="2.2">
+          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+        </svg>
+        <span>Salin Link Khusus Pacar</span>
+      </button>
+
+      <button id="btnLockAgain" class="btn-secondary" style="padding: 0.55rem 1rem; font-size: var(--text-xs);" type="button">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5A3818" stroke-width="2.2">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+        <span>Kunci Kembali</span>
+      </button>
+    </div>
+  </footer>
+
+  <!-- MODAL 1: SURAT CINTA -->
+  <div id="letterModal" class="modal-overlay">
+    <div class="modal-box" style="text-align: center;">
+      <h3 class="font-title" style="font-size: var(--text-lg); color: #E68A00;">Untuk Kamu di Hari Spesialmu</h3>
+      <div id="displayLetter" class="letter-paper"></div>
+      <button id="btnCloseLetter" class="btn-primary" type="button">Tutup Surat</button>
+    </div>
+  </div>
+
+  <!-- MODAL 2: HADIAH MINI GAME -->
+  <div id="rewardModal" class="modal-overlay">
+    <div class="modal-box" style="text-align: center;">
+      <svg width="64" height="64" viewBox="0 0 64 64" fill="none" style="margin: 0 auto 8px;">
+        <path d="M18 14H46V28C46 35.7 39.7 42 32 42C24.3 42 18 35.7 18 28V14Z" fill="#FFD54F" stroke="#5A3818" stroke-width="3"/>
+        <path d="M18 18H10C10 24 13 28 18 28" stroke="#5A3818" stroke-width="3" stroke-linecap="round"/>
+        <path d="M46 18H54C54 24 51 28 46 28" stroke="#5A3818" stroke-width="3" stroke-linecap="round"/>
+        <rect x="28" y="42" width="8" height="10" fill="#FFA726"/>
+        <rect x="20" y="52" width="24" height="6" rx="3" fill="#5A3818"/>
+      </svg>
+      <h3 class="font-title" style="font-size: var(--text-lg);">Yeay! Kamu Berhasil!</h3>
+      <div id="displayReward" class="letter-paper" style="text-align: center; font-weight: 700;"></div>
+      <p style="font-size: var(--text-xs); color: var(--brown-light); margin-bottom: 12px;">
+        Screenshot layar ini dan kirim ke aku untuk klaim hadiahnya ya!
+      </p>
+      <button id="btnCloseReward" class="btn-primary" type="button">Klaim Sekarang</button>
+    </div>
+  </div>
+
+  <!-- MODAL 3: FORM EDIT PEMBUAT -->
+  <div id="editModal" class="modal-overlay">
+    <div class="modal-box">
+      <h3 class="font-title" style="font-size: var(--text-lg); margin-bottom: 12px;">Edit Ucapan Ulang Tahun</h3>
+      <div class="form-group">
+        <label>Nama Panggilan Pacar</label>
+        <input type="text" id="inputName" />
+      </div>
+      <div class="form-group">
+        <label>Caption di Bawah Bingkai Foto</label>
+        <input type="text" id="inputCaption" />
+      </div>
+      <div class="form-group">
+        <label>Isi Surat Ulang Tahun</label>
+        <textarea id="inputLetter" rows="5"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Hadiah Rahasia Mini Game</label>
+        <input type="text" id="inputReward" />
+      </div>
+      <div style="display: flex; gap: 0.6rem; justify-content: flex-end;">
+        <button id="btnCancelEdit" class="btn-secondary" type="button">Batal</button>
+        <button id="btnSaveEdit" class="btn-primary" type="button">Simpan</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFIKASI -->
+  <div id="toastNotif" class="toast-notif">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="#FFD54F">
+      <circle cx="12" cy="12" r="10"/>
+    </svg>
+    <span id="toastText">Meowww~</span>
+  </div>
+
+  <script>
+    /* ==========================================================================
+       KONFIGURASI DEFAULT PEMBUAT (Bisa langsung diubah di sini juga)
+       ========================================================================== */
+    const CONFIG_PEMBUAT = {
+      pinRahasia: "1234", // Ganti PIN rahasia Anda di sini
+      namaPacar: "Sayangku",
+      captionFoto: "Kesayangan yang paling manis",
+      isiSurat: "Selamat ulang tahun ya sayang!\n\nTerima kasih sudah selalu menjadi warna kuning paling cerah di hari-hariku. Semoga di usia yang baru ini kamu selalu sehat, bahagia, semua impianmu tercapai, dan kita terus bareng-bareng melewati banyak momen lucu ke depannya.\n\nLove you so much!",
+      hadiahGame: "Kupon Bebas Pilih Makan Enak + Peluk Hangat Seharian!"
+    };
+
+    const ALASAN_SPESIAL = [
+      "Senyummu selalu berhasil bikin hariku yang capek langsung cerah lagi!",
+      "Kamu punya hati yang lembut dan penyayang, persis seperti kucing lucu favoritmu.",
+      "Bersamamu, hal-hal sederhana selalu terasa seru dan penuh tawa.",
+      "Kamu selalu jadi penyemangat terbaik di setiap langkahku.",
+      "Warna kuning aja kalah cerah sama aura positif yang kamu bawa setiap hari!"
+    ];
+
+    /* ==========================================================================
+       1. SLIDESHOW MULTI-FOTO OTOMATIS (FADE IN / FADE OUT 3 DETIK)
+       ========================================================================== */
+    const slides = document.querySelectorAll('.slide-photo');
+    const dots = document.querySelectorAll('.slide-dot');
+    let currentSlide = 0;
+
+    function nextSlide() {
+      if (slides.length <= 1) return;
+      slides[currentSlide].classList.remove('active');
+      dots[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
+      dots[currentSlide].classList.add('active');
+    }
+
+    // Berpindah otomatis setiap 3000ms (3 detik)
+    setInterval(nextSlide, 3000);
+
+    /* ==========================================================================
+       2. EFEK SUARA WEB AUDIO (MEOW LUCU & LAGU HAPPY BIRTHDAY)
+       ========================================================================== */
+    let audioCtx = null;
+    function getAudioCtx() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      return audioCtx;
+    }
+
+    function playMeowSound() {
+      try {
+        const ctx = getAudioCtx();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'triangle';
+        const now = ctx.currentTime;
+        osc.frequency.setValueAtTime(520, now);
+        osc.frequency.exponentialRampToValueAtTime(860, now + 0.14);
+        osc.frequency.exponentialRampToValueAtTime(410, now + 0.42);
+        gain.gain.setValueAtTime(0.001, now);
+        gain.gain.linearRampToValueAtTime(0.16, now + 0.06);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.46);
+      } catch (e) {}
+    }
+
+    // Melodi Happy Birthday sederhana
+    let isPlayingMusic = false;
+    let musicTimeout = null;
+    const hbdNotes = [
+      [261.6, 0.3], [261.6, 0.3], [293.7, 0.6], [261.6, 0.6], [349.2, 0.6], [329.6, 1.0],
+      [261.6, 0.3], [261.6, 0.3], [293.7, 0.6], [261.6, 0.6], [392.0, 0.6], [349.2, 1.0],
+      [261.6, 0.3], [261.6, 0.3], [523.3, 0.6], [440.0, 0.6], [349.2, 0.6], [329.6, 0.6], [293.7, 1.0],
+      [466.2, 0.3], [466.2, 0.3], [440.0, 0.6], [349.2, 0.6], [392.0, 0.6], [349.2, 1.1]
+    ];
+
+    function playBirthdaySong(index = 0) {
+      if (!isPlayingMusic) return;
+      if (index >= hbdNotes.length) index = 0;
+      const [freq, dur] = hbdNotes[index];
+      const ctx = getAudioCtx();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.value = freq;
+      gain.gain.setValueAtTime(0.12, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + dur * 0.9);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + dur * 0.92);
+      musicTimeout = setTimeout(() => playBirthdaySong(index + 1), dur * 520);
+    }
+
+    document.getElementById('btnMusic').addEventListener('click', () => {
+      isPlayingMusic = !isPlayingMusic;
+      const label = document.getElementById('musicLabel');
+      if (isPlayingMusic) {
+        label.textContent = 'Jeda Lagu';
+        playBirthdaySong(0);
+      } else {
+        label.textContent = 'Putar Lagu';
+        clearTimeout(musicTimeout);
+      }
+    });
+
+    /* ==========================================================================
+       3. CONFETTI KUNING & TOAST
+       ========================================================================== */
+    const canvas = document.getElementById('confettiCanvas');
+    const cCtx = canvas.getContext('2d');
+    let confettiPieces = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function launchConfetti() {
+      const colors = ['#FFD54F', '#FFC107', '#FFA726', '#FFF176', '#FFFFFF'];
+      for (let i = 0; i < 85; i++) {
+        confettiPieces.push({
+          x: Math.random() * canvas.width,
+          y: -20 - Math.random() * 120,
+          w: 8 + Math.random() * 6,
+          h: 6 + Math.random() * 5,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          vy: 2.5 + Math.random() * 3.5,
+          vx: (Math.random() - 0.5) * 3,
+          rot: Math.random() * 360
+        });
+      }
+    }
+
+    function updateConfetti() {
+      cCtx.clearRect(0, 0, canvas.width, canvas.height);
+      confettiPieces.forEach((p, idx) => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.rot += 4;
+        cCtx.save();
+        cCtx.translate(p.x, p.y);
+        cCtx.rotate((p.rot * Math.PI) / 180);
+        cCtx.fillStyle = p.color;
+        cCtx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        cCtx.restore();
+        if (p.y > canvas.height + 20) confettiPieces.splice(idx, 1);
+      });
+      requestAnimationFrame(updateConfetti);
+    }
+    updateConfetti();
+
+    let toastTimer = null;
+    function showToast(msg) {
+      const el = document.getElementById('toastNotif');
+      document.getElementById('toastText').textContent = msg;
+      el.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => el.classList.remove('show'), 3200);
+    }
+
+    /* ==========================================================================
+       4. INTERAKSI POLAROID, KUE LILIN & ALASAN SPESIAL
+       ========================================================================== */
+    document.getElementById('polaroidCard').addEventListener('click', () => {
+      playMeowSound();
+      showToast('Meowww~ Kamu manis banget hari ini!');
+    });
+
+    let candleLit = true;
+    document.getElementById('cakeBox').addEventListener('click', () => {
+      const flame = document.getElementById('candleFlame');
+      const smoke = document.getElementById('candleSmoke');
+      const status = document.getElementById('candleStatus');
+      if (candleLit) {
+        candleLit = false;
+        flame.classList.add('flame-off');
+        smoke.classList.add('visible');
+        status.textContent = 'Yeay! Semoga semua harapanmu terkabul!';
+        launchConfetti();
+        playMeowSound();
+      } else {
+        candleLit = true;
+        flame.classList.remove('flame-off');
+        smoke.classList.remove('visible');
+        status.textContent = 'Lilin menyala lagi! Klik untuk tiup.';
+      }
+    });
+
+    let reasonIdx = 0;
+    document.getElementById('btnMeowReason').addEventListener('click', () => {
+      playMeowSound();
+      showToast(ALASAN_SPESIAL[reasonIdx]);
+      reasonIdx = (reasonIdx + 1) % ALASAN_SPESIAL.length;
+    });
+
+    /* ==========================================================================
+       5. MINI GAME TANGKAP KUCING & KUNING (IKON VEKTOR SVG)
+       ========================================================================== */
+    const TARGET_SVGS = [
+      // Kucing Kuning
+      `<svg width="46" height="46" viewBox="0 0 64 64" fill="none"><path d="M16 26 L12 10 L28 19 Z" fill="#FFA726"/><path d="M48 26 L52 10 L36 19 Z" fill="#FFA726"/><circle cx="32" cy="36" r="20" fill="#FFD54F" stroke="#5A3818" stroke-width="3"/><circle cx="25" cy="34" r="2.5" fill="#5A3818"/><circle cx="39" cy="34" r="2.5" fill="#5A3818"/><path d="M28 40 Q32 44 36 40" stroke="#5A3818" stroke-width="2.5" stroke-linecap="round"/></svg>`,
+      // Jejak Paw
+      `<svg width="44" height="44" viewBox="0 0 64 64" fill="#FFA726"><ellipse cx="32" cy="42" rx="14" ry="11"/><circle cx="16" cy="27" r="6"/><circle cx="27" cy="20" r="6"/><circle cx="39" cy="20" r="6"/><circle cx="49" cy="27" r="6"/></svg>`,
+      // Bintang Kuning
+      `<svg width="44" height="44" viewBox="0 0 64 64" fill="none"><polygon points="32,8 39,23 55,25 43,36 46,52 32,44 18,52 21,36 9,25 25,23" fill="#FFC812" stroke="#5A3818" stroke-width="2.5" stroke-linejoin="round"/></svg>`,
+      // Hati Kuning
+      `<svg width="42" height="42" viewBox="0 0 64 64" fill="none"><path d="M32 54 C32 54 10 39 10 24 C10 16 16 11 23 11 C27 11 30 13 32 16 C34 13 37 11 41 11 C48 11 54 16 54 24 C54 39 32 54 32 54 Z" fill="#FFCA28" stroke="#5A3818" stroke-width="2.5"/></svg>`
+    ];
+
+    let gameScore = 0;
+    let gameTime = 20;
+    let gameActive = false;
+    let spawnInterval = null;
+    let timerInterval = null;
+
+    const arena = document.getElementById('gameArena');
+    const scoreEl = document.getElementById('gameScore');
+    const timerEl = document.getElementById('gameTimer');
+
+    function spawnTarget() {
+      if (!gameActive) return;
+      const item = document.createElement('div');
+      item.className = 'game-target';
+      item.innerHTML = TARGET_SVGS[Math.floor(Math.random() * TARGET_SVGS.length)];
+      const maxX = arena.clientWidth - 56;
+      const maxY = arena.clientHeight - 56;
+      item.style.left = Math.max(6, Math.random() * maxX) + 'px';
+      item.style.top = Math.max(6, Math.random() * maxY) + 'px';
+
+      item.addEventListener('click', () => {
+        if (!gameActive) return;
+        gameScore++;
+        scoreEl.textContent = gameScore;
+        playMeowSound();
+        item.remove();
+      });
+
+      arena.appendChild(item);
+      setTimeout(() => { if (item.parentNode) item.remove(); }, 1350);
+    }
+
+    function startMiniGame() {
+      gameScore = 0;
+      gameTime = 20;
+      gameActive = true;
+      scoreEl.textContent = '0';
+      timerEl.textContent = '20';
+      arena.innerHTML = '';
+
+      spawnTarget();
+      spawnInterval = setInterval(spawnTarget, 680);
+      timerInterval = setInterval(() => {
+        gameTime--;
+        timerEl.textContent = gameTime;
+        if (gameTime <= 0) endMiniGame();
+      }, 1000);
+    }
+
+    function endMiniGame() {
+      gameActive = false;
+      clearInterval(spawnInterval);
+      clearInterval(timerInterval);
+      arena.innerHTML = `<button id="btnStartGame" class="btn-primary" type="button">Main Lagi</button>`;
+      document.getElementById('btnStartGame').addEventListener('click', startMiniGame);
+
+      if (gameScore >= 10) {
+        launchConfetti();
+        document.getElementById('rewardModal').classList.add('open');
+      } else {
+        showToast(`Skor kamu ${gameScore}. Kumpulkan 10 poin ya, coba lagi!`);
+      }
+    }
+
+    document.getElementById('btnStartGame').addEventListener('click', startMiniGame);
+
+    /* ==========================================================================
+       6. DATA STATE, URL PARAMETER & KUNCI EDIT RAHASIA (5x TAP)
+       ========================================================================== */
+    let currentData = { ...CONFIG_PEMBUAT };
+
+    function loadData() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.has('n')) currentData.namaPacar = params.get('n');
+      if (params.has('c')) currentData.captionFoto = params.get('c');
+      if (params.has('l')) currentData.isiSurat = params.get('l');
+      if (params.has('r')) currentData.hadiahGame = params.get('r');
+
+      const saved = localStorage.getItem('bday_yellow_data');
+      if (!params.has('n') && saved) {
+        try { currentData = { ...currentData, ...JSON.parse(saved) }; } catch (e) {}
+      }
+      renderData();
+    }
+
+    function renderData() {
+      document.getElementById('displayPartnerName').textContent = currentData.namaPacar;
+      document.getElementById('displayCaption').textContent = currentData.captionFoto;
+      document.getElementById('displayLetter').textContent = currentData.isiSurat;
+      document.getElementById('displayReward').textContent = currentData.hadiahGame;
+    }
+
+    // Modal Surat & Hadiah
+    document.getElementById('btnOpenLetter').addEventListener('click', () => {
+      document.getElementById('letterModal').classList.add('open');
+      launchConfetti();
+    });
+    document.getElementById('btnCloseLetter').addEventListener('click', () => {
+      document.getElementById('letterModal').classList.remove('open');
+    });
+    document.getElementById('btnCloseReward').addEventListener('click', () => {
+      document.getElementById('rewardModal').classList.remove('open');
+    });
+
+    // Pintu Rahasia 5x Tap pada "Special Day Edition"
+    let tapCount = 0;
+    let tapResetTimer = null;
+    document.getElementById('secretTrigger').addEventListener('click', () => {
+      tapCount++;
+      clearTimeout(tapResetTimer);
+      tapResetTimer = setTimeout(() => { tapCount = 0; }, 2000);
+      if (tapCount >= 5) {
+        tapCount = 0;
+        const pin = prompt('Masukkan PIN Rahasia Pembuat:');
+        if (pin === CONFIG_PEMBUAT.pinRahasia) {
+          document.getElementById('adminControls').classList.add('unlocked');
+          showToast('Mode Edit Pembuat Terbuka!');
+        } else if (pin !== null) {
+          showToast('PIN salah!');
+        }
+      }
+    });
+
+    // Kontrol Admin
+    document.getElementById('btnOpenEdit').addEventListener('click', () => {
+      document.getElementById('inputName').value = currentData.namaPacar;
+      document.getElementById('inputCaption').value = currentData.captionFoto;
+      document.getElementById('inputLetter').value = currentData.isiSurat;
+      document.getElementById('inputReward').value = currentData.hadiahGame;
+      document.getElementById('editModal').classList.add('open');
+    });
+
+    document.getElementById('btnCancelEdit').addEventListener('click', () => {
+      document.getElementById('editModal').classList.remove('open');
+    });
+
+    document.getElementById('btnSaveEdit').addEventListener('click', () => {
+      currentData.namaPacar = document.getElementById('inputName').value || CONFIG_PEMBUAT.namaPacar;
+      currentData.captionFoto = document.getElementById('inputCaption').value || CONFIG_PEMBUAT.captionFoto;
+      currentData.isiSurat = document.getElementById('inputLetter').value || CONFIG_PEMBUAT.isiSurat;
+      currentData.hadiahGame = document.getElementById('inputReward').value || CONFIG_PEMBUAT.hadiahGame;
+      localStorage.setItem('bday_yellow_data', JSON.stringify(currentData));
+      renderData();
+      document.getElementById('editModal').classList.remove('open');
+      showToast('Perubahan berhasil disimpan!');
+    });
+
+    document.getElementById('btnShareLink').addEventListener('click', () => {
+      const url = new URL(window.location.href.split('?')[0]);
+      url.searchParams.set('n', currentData.namaPacar);
+      url.searchParams.set('c', currentData.captionFoto);
+      url.searchParams.set('l', currentData.isiSurat);
+      url.searchParams.set('r', currentData.hadiahGame);
+      navigator.clipboard.writeText(url.toString()).then(() => {
+        showToast('Link khusus pacar berhasil disalin!');
+      });
+    });
+
+    document.getElementById('btnLockAgain').addEventListener('click', () => {
+      document.getElementById('adminControls').classList.remove('unlocked');
+      showToast('Mode Edit dikunci kembali.');
+    });
+
+    loadData();
+  </script>
+</body>
+</html>
